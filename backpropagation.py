@@ -133,13 +133,16 @@ def random_ann(num_attributes=2, num_hidden=2):
     ann = ANN(num_attributes, neurons)
     return ann
 
+# Ask for learning rate and num of epoches
+learningRate = int(input("Learning Rate: "))
+epoches = int(input("Number of Epochs: "))
 
 # Run network 10 times and get the best error
 best_ann = None
 best_error = float("inf")
 for instance_index in range(10):
     ann = random_ann()
-    ann.learn(example_attributes, example_labels, learning_rate=10.0, num_epochs=10000)
+    ann.learn(example_attributes, example_labels, learning_rate=learningRate, num_epochs=epoches)
     error = ann.squared_error(example_attributes, example_labels)
     if error < best_error:
         best_error = error
